@@ -1,0 +1,19 @@
+1.
+python cnn_face_encoder.py -i ./vdos/krishna.mp4 -m ./mmod_human_face_detector.dat -e ./encodings/krishna.pickle -d ./faceDump/krishna
+
+the above is used to detect faces and dump frames containing faces into the faceDump folder (u will have to manually create the folder in which u want to save the frames, in this case it is called as krishna)
+and the pickle is created which contains the comnined version of each frame's boxes and 128 face encodings of each box (face)
+
+this code was partially taken from cnn_face_encoder from dlib's github and pyImageSearch
+the face detection part is from dlib and the dump abd pickle making part is from pyImageSearch
+we didnt use pyImageSearch entirely because that wanted input of images of each person into a separate folder and then would create pickle file out from that and we didnt want that
+
+2.
+python clusterFaces.py -e encodings/krishna.pickle -d 1 -o encodings/krishna-clustered.pickle
+
+is used to group similar faces together and create another pickle file called clustered pickle
+
+3.
+python3 cnnFaceComperator.py -i vdos/krishna-isl.mp4 -m mmod_human_face_detector.dat -e encodings/krishna-clustered.pickle
+
+used to detect faces in the new vdo and try matching them with the already available face encodng details in the cluster pickle
