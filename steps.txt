@@ -14,6 +14,6 @@ python clusterFaces.py -e encodings/krishna.pickle -d 1 -o encodings/krishna-clu
 is used to group similar faces together and create another pickle file called clustered pickle
 
 3.
-python3 cnnFaceComperator.py -i vdos/krishna-isl.mp4 -m mmod_human_face_detector.dat -e encodings/krishna-clustered.pickle
+python3 comperator_actual.py -i vdos/krishna-isl.mp4 -m mmod_human_face_detector.dat -e encodings/krishna-clustered.pickle
 
 used to detect faces in the new vdo and try matching them with the already available face encodng details in the cluster pickle
